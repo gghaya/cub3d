@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:23:48 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 00:53:38 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/10 00:58:46 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 }
 
 
-void init_funct(t_struct **s)
+void init_funct(t_struct **s, t_paths **path)
 {
 	(*s)->mlx = mlx_init();
 	(*s)->win = mlx_new_window((*s)->mlx, (*s)->win_width, (*s)->win_higth, "CUB3D");
+	read_textures(s, path);
 	(*s)->img.img = mlx_new_image((*s)->mlx, (*s)->win_width, (*s)->win_higth);
 	(*s)->img.addr = mlx_get_data_addr((*s)->img.img, &((*s)->img.bits_per_pixel), &((*s)->img.line_length),
 								&((*s)->img.endian));
@@ -199,34 +200,34 @@ void draw_line(t_data *img, double beginX, double beginY, double endX, double en
 	}
 	// printf("fin\n");
 }
-void    draw_line_dda(t_data *img, double beginX, double beginY, double endX, double endY, double colorw)
-{
-    int        d[2];
-    int        i;
-    int        step;
-    float    x[2];
-    float    inc[2];
+// void    draw_line_dda(t_data *img, double beginX, double beginY, double endX, double endY, double colorw)
+// {
+//     int        d[2];
+//     int        i;
+//     int        step;
+//     float    x[2];
+//     float    inc[2];
 
-    i = 0;
-	d[0] = endX - beginX;
-     d[1] = endY - beginY;
-    if (abs(d[0]) > abs(d[1]))
-        step = abs(d[0]);
-    else
-        step = abs(d[1]);
-    inc[0] = (float)d[0] / (float)step;
-    inc[1] = (float)d[1] / (float)step;
-    x[0] = beginX;
-    x[1] = beginY;
-    while (i < step /*&& x[0] <= 128 && x[1] <= 128*/)
-    {
-        my_mlx_pixel_put(img, floor(x[0]), floor(x[1]), 0xeb4034);
-        x[0] += inc[0];
-        x[1] += inc[1];
-        i++;
-    }
-}
-void draw_line_dda2(t_data *img, double beginX, double beginY, double endX, double endY, double color) {
+//     i = 0;
+// 	d[0] = endX - beginX;
+//      d[1] = endY - beginY;
+//     if (abs(d[0]) > abs(d[1]))
+//         step = abs(d[0]);
+//     else
+//         step = abs(d[1]);
+//     inc[0] = (float)d[0] / (float)step;
+//     inc[1] = (float)d[1] / (float)step;
+//     x[0] = beginX;
+//     x[1] = beginY;
+//     while (i < step /*&& x[0] <= 128 && x[1] <= 128*/)
+//     {
+//         my_mlx_pixel_put(img, floor(x[0]), floor(x[1]), 0xeb4034);
+//         x[0] += inc[0];
+//         x[1] += inc[1];
+//         i++;
+//     }
+// }
+void draw_line_dda(t_data *img, double beginX, double beginY, double endX, double endY, double color) {
     double deltaX = endX - beginX;
     double deltaY = endY - beginY;
 
@@ -455,6 +456,7 @@ void	drawingray(t_ray all, t_struct  **s)
 void cast_rays(t_struct **s)
 {
 	int i = 0;
+	int texture = 0;
 	double ray_ang = (*s)->rot_angle - ((*s)->fov_angle / 2);
 	(*s)->rays = malloc(sizeof (t_ray));
 
@@ -486,7 +488,8 @@ void cast_rays(t_struct **s)
 			// drawingray(*(*s)->rays,s);
 		}
 		// draw_rays(s, (*s)->rot_angle);
-		// render_walls(s, i, 0, (*s)->rays);
+		texture = check_wall_hit(s, texture, (*s)->rays);
+		render_walls(s, i, 0, (*s)->rays);
 		i++;
 		ray_ang += ((*s)->fov_angle / (double)(*s)->num_rays);
 	}
@@ -539,11 +542,11 @@ void draw_disk(t_struct	**s)
 void    put_(t_struct **s)
 {
 	// push_rays(s);
-	int j =0;
-	int i =0;
-	int k =0;
-	int l= 0;
-		k = 0;
+	// int j =0;
+	// int i =0;
+	// int k =0;
+	// int l= 0;
+	// 	k = 0;
 
 	while ((*s)->map[k])
 	{
@@ -593,8 +596,8 @@ void manage_events(t_struct **s)
 	mlx_loop_hook((*s)->mlx, &update_info, (s));
 }
 
-void    put_pixels(t_struct **s)
+void    put_pixels(t_struct **s, t_paths **path)
 {
-	init_funct(s);
+	init_funct(s, path);
 	manage_events(s);
 }

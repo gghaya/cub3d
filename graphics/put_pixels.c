@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:23:48 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 22:07:24 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/10 00:53:38 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void init_player(t_struct **s)
 		}	
 		i++;
 	}
-	(*s)->player_x = (*s)->x*64;
-	(*s)->player_y = (*s)->y*64;
-	(*s)->real_y = (*s)->y*64;
-	(*s)->real_x = (*s)->x*64;
+	(*s)->player_x = (*s)->x * (*s)->tail_size;
+	(*s)->player_y = (*s)->y * (*s)->tail_size;
+	(*s)->real_y = (*s)->y * (*s)->tail_size;
+	(*s)->real_x = (*s)->x * (*s)->tail_size;
 	(*s)->turn_dirct =0;
 	(*s)->walk_dirct=0;
 	(*s)->move_speed = 15.0;
@@ -250,7 +250,7 @@ void draw_line_dda2(t_data *img, double beginX, double beginY, double endX, doub
     }
 }
 
-void    draw_rays(t_struct **s, double angle)
+void    draw_rays(t_struct **s)
 {
     // int    i;
     // int    ox;
@@ -263,7 +263,7 @@ void    draw_rays(t_struct **s, double angle)
     //     my_mlx_pixel_put(&((*s)->img), ox, oy, 0xff6700);
     //     i++;
     // }
-    my_mlx_pixel_put(&((*s)->img), ((*s)->player_x + 16 + 50 * cos(angle)) * MINI, ((*s)->player_y + 16 + 50 * sin(angle)) * MINI, 0x000000);
+    my_mlx_pixel_put(&((*s)->img), (((*s)->player_x + 32) + 50 * cos((*s)->rot_angle)) * MINI, (((*s)->player_y + 32 )+ 50 * sin((*s)->rot_angle)) * MINI, 0x000000);
 }
 
 double distance (double xb, double yb, double xe, double ye)
@@ -475,13 +475,13 @@ void cast_rays(t_struct **s)
 			// my_mlx_pixel_put(&(*s)->img, round(((*s)->player_x + r1.dist * cos(ray_ang)) * MINI), round(((*s)->player_y + r1.dist * sin(ray_ang)) * MINI), 0x00ff00);
 			// drawingray(*(*s)->rays,s);
 		if (i == (*s)->num_rays/2)
-			draw_line_dda(&(*s)->img, (*s)->player_x, (*s)->player_y, (*s)->rays->hit_x, (*s)->rays->hit_y, 0x00ff00);
+			draw_line_dda(&(*s)->img, (*s)->player_x + 32 , (*s)->player_y + 32 , (*s)->rays->hit_x, (*s)->rays->hit_y, 0x00ff00);
 		}
 		else
 		{
 			*(*s)->rays = fill_info(r2, *(*s)->rays,0);
 		if (i == (*s)->num_rays/2)
-			draw_line_dda(&(*s)->img, (*s)->player_x, (*s)->player_y, (*s)->rays->hit_x, (*s)->rays->hit_y, 0xff0000);
+			draw_line_dda(&(*s)->img, (*s)->player_x + 32 , (*s)->player_y +32 , (*s)->rays->hit_x, (*s)->rays->hit_y, 0xff0000);
 			// my_mlx_pixel_put(&(*s)->img, round(((*s)->player_x +  r2.dist * cos(ray_ang)) * MINI), round(((*s)->player_y + (r2.dist * sin(ray_ang))) * MINI), 0x0ff0000);
 			// drawingray(*(*s)->rays,s);
 		}
@@ -551,15 +551,15 @@ void    put_(t_struct **s)
 		while ((*s)->map[k][l])
 		{
 			i = 0;
-			while (i < 64)
+			while (i < 63)
 			{
 				j = 0;
-				while (j < 64)
+				while (j < 63)
 				{
 					if ((*s)->map[k][l] == '1')
-						my_mlx_pixel_put(&((*s)->img), ((l*64)+j) * MINI, ((k*64)+i )* MINI, 0x2c446d);
+						my_mlx_pixel_put(&((*s)->img), ((l*(*s)->tail_size)+j) * MINI, ((k*(*s)->tail_size)+i )* MINI, 0x2c446d);
 					else if ((*s)->map[k][l] == '0' || ft_strchrr("NSWE", (*s)->map[k][l]) == 1)
-							my_mlx_pixel_put(&((*s)->img), ((l*64)+j) * MINI, ((k*64)+i) * MINI, 0xece7dd);
+							my_mlx_pixel_put(&((*s)->img), ((l*(*s)->tail_size)+j) * MINI, ((k*(*s)->tail_size)+i) * MINI, 0xece7dd);
 					j++;
 				}
 				i++;
@@ -569,8 +569,8 @@ void    put_(t_struct **s)
 		k++;
 	}
 	draw_disk(s);
-	draw_rays(s, (*s)->rot_angle);
 	cast_rays(s);
+	draw_rays(s);
 	// for (int i = 0; i < (*s)->num_rays; i++)
 	// {
 		

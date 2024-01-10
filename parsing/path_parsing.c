@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:28:26 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 18:52:31 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:55:26 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,25 +90,20 @@ int	check_id(t_var *v, t_paths **path)
 	v->x = 0;
 	v->i = 0;
 	v->flag = 0;
-	int skip;
 	search_map(v->new_map, v);
 	while (v->x < v->i)
 	{
 		v->y = 0;
 		v->n = 0;
-		skip = 0;
+		v->skip = 0;
 		v->save = 0;
 		helper(v);
 		if (v->new_map[v->x][v->y] != '\0')
 		{
 			while (v->new_map[v->x][v->y] && v->new_map[v->x][v->y] != '.')
 				v->y++;
-			while(v->new_map[v->x][skip] && v->new_map[v->x][skip] == ' ')
-				skip++;
-			v->save = skip;
-			while (v->new_map[v->x][skip] && v->new_map[v->x][skip] != ' ')
-				skip++;
-			check_id_help(v, v->x, skip);
+			skip_space(v);
+			check_id_help(v, v->x, v->skip);
 		}
 		v->x++;
 	}

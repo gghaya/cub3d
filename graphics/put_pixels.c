@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixels.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:23:48 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 00:58:46 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/10 15:27:36 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -456,7 +456,7 @@ void	drawingray(t_ray all, t_struct  **s)
 void cast_rays(t_struct **s)
 {
 	int i = 0;
-	int texture = 0;
+	int texture;
 	double ray_ang = (*s)->rot_angle - ((*s)->fov_angle / 2);
 	(*s)->rays = malloc(sizeof (t_ray));
 
@@ -476,20 +476,20 @@ void cast_rays(t_struct **s)
 			*(*s)->rays = fill_info(r1, *(*s)->rays,1);
 			// my_mlx_pixel_put(&(*s)->img, round(((*s)->player_x + r1.dist * cos(ray_ang)) * MINI), round(((*s)->player_y + r1.dist * sin(ray_ang)) * MINI), 0x00ff00);
 			// drawingray(*(*s)->rays,s);
-		if (i == (*s)->num_rays/2)
-			draw_line_dda(&(*s)->img, (*s)->player_x + 32 , (*s)->player_y + 32 , (*s)->rays->hit_x, (*s)->rays->hit_y, 0x00ff00);
+			// if (i == (*s)->num_rays/2)
+			// 	draw_line_dda(&(*s)->img, (*s)->player_x + 32 , (*s)->player_y + 32 , (*s)->rays->hit_x, (*s)->rays->hit_y, 0x00ff00);
 		}
 		else
 		{
 			*(*s)->rays = fill_info(r2, *(*s)->rays,0);
-		if (i == (*s)->num_rays/2)
-			draw_line_dda(&(*s)->img, (*s)->player_x + 32 , (*s)->player_y +32 , (*s)->rays->hit_x, (*s)->rays->hit_y, 0xff0000);
+			// if (i == (*s)->num_rays/2)
+			// 	draw_line_dda(&(*s)->img, (*s)->player_x + 32 , (*s)->player_y +32 , (*s)->rays->hit_x, (*s)->rays->hit_y, 0xff0000);
 			// my_mlx_pixel_put(&(*s)->img, round(((*s)->player_x +  r2.dist * cos(ray_ang)) * MINI), round(((*s)->player_y + (r2.dist * sin(ray_ang))) * MINI), 0x0ff0000);
 			// drawingray(*(*s)->rays,s);
 		}
 		// draw_rays(s, (*s)->rot_angle);
 		texture = check_wall_hit(s, texture, (*s)->rays);
-		render_walls(s, i, 0, (*s)->rays);
+		render_walls(s, i, texture, (*s)->rays);
 		i++;
 		ray_ang += ((*s)->fov_angle / (double)(*s)->num_rays);
 	}
@@ -541,39 +541,39 @@ void draw_disk(t_struct	**s)
 }
 void    put_(t_struct **s)
 {
-	// push_rays(s);
+	cast_rays(s);
 	// int j =0;
 	// int i =0;
 	// int k =0;
 	// int l= 0;
 	// 	k = 0;
 
-	while ((*s)->map[k])
-	{
-		l = 0;
-		while ((*s)->map[k][l])
-		{
-			i = 0;
-			while (i < 63)
-			{
-				j = 0;
-				while (j < 63)
-				{
-					if ((*s)->map[k][l] == '1')
-						my_mlx_pixel_put(&((*s)->img), ((l*(*s)->tail_size)+j) * MINI, ((k*(*s)->tail_size)+i )* MINI, 0x2c446d);
-					else if ((*s)->map[k][l] == '0' || ft_strchrr("NSWE", (*s)->map[k][l]) == 1)
-							my_mlx_pixel_put(&((*s)->img), ((l*(*s)->tail_size)+j) * MINI, ((k*(*s)->tail_size)+i) * MINI, 0xece7dd);
-					j++;
-				}
-				i++;
-			}
-			l++;
-		}
-		k++;
-	}
-	draw_disk(s);
-	cast_rays(s);
-	draw_rays(s);
+	// while ((*s)->map[k])
+	// {
+	// 	l = 0;
+	// 	while ((*s)->map[k][l])
+	// 	{
+	// 		i = 0;
+	// 		while (i < 63)
+	// 		{
+	// 			j = 0;
+	// 			while (j < 63)
+	// 			{
+	// 				if ((*s)->map[k][l] == '1')
+	// 					my_mlx_pixel_put(&((*s)->img), ((l*(*s)->tail_size)+j) * MINI, ((k*(*s)->tail_size)+i )* MINI, 0x2c446d);
+	// 				else if ((*s)->map[k][l] == '0' || ft_strchrr("NSWE", (*s)->map[k][l]) == 1)
+	// 						my_mlx_pixel_put(&((*s)->img), ((l*(*s)->tail_size)+j) * MINI, ((k*(*s)->tail_size)+i) * MINI, 0xece7dd);
+	// 				j++;
+	// 			}
+	// 			i++;
+	// 		}
+	// 		l++;
+	// 	}
+	// 	k++;
+	// }
+	// push_rays(s);
+	// draw_disk(s);
+	// draw_rays(s);
 	// for (int i = 0; i < (*s)->num_rays; i++)
 	// {
 		

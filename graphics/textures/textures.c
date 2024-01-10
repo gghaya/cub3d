@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:41:58 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 23:16:30 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:13:16 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	search_pixel(t_img *img, int w_stripeheight, int wall_dif)
 
 	color = 0;
 	img->tofy = wall_dif * ((float)img->height / w_stripeheight);
-	color = img->addr[(img->width * img->tofy) + img->tofx];
+	color = img->color[(img->width * img->tofy) + img->tofx];
 	return (color);
 }
 

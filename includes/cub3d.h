@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:53:05 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 00:32:48 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:52:38 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,6 @@ typedef struct s_paths
 	char	*so;
 	char	*we;
 	char	*ea;
-	int 	n;
-	int 	s;
-	int 	w;
-	int 	e;
 }	t_paths;
 
 //****** PLAYER DIRECTION PATHS ******
@@ -173,6 +169,7 @@ typedef struct s_var
 	int		index;
 	int		found;
 	int		flag;
+	int		skip;
 	int		map_len;
 	int		map_pos;
 	int		player_pos;
@@ -273,7 +270,7 @@ void	ft_freetab(char **map);
 void	get_map_len(t_var *v, char *str);
 int		read_map(t_var *v);
 char	**fill_empty(char **map, t_var *v);
-void	check_valid_chars(char **map, t_var *v, t_paths **path);
+void	check_valid_chars(char **map, t_var *v);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strcmp(char *s1, char *s2);
 void	search_map(char **map, t_var *v);
@@ -301,6 +298,7 @@ void	get_path_pos(t_var *v, int i, int j);
 void	p_validation_help(t_var *v, int i);
 void	fill_path(char *s[], t_paths **paths, int index, int i);
 void	helper(t_var *v);
+void	skip_space(t_var *v);
 
 //******** GRAPHICS ***********
 void	real_map(t_var *var, t_struct **s);

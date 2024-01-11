@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:41:45 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 23:16:46 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:28:59 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	render_walls(t_struct **s, int x, int texture, t_ray *ray)
 	int		top_tmp;
 
 	top_tmp = 0;
-	(void)texture;
 	rendr_util(s, &wall, ray);
 	if (wall.top_pix < 0 || wall.top_pix > (*s)->win_higth)
 	{
@@ -64,15 +63,12 @@ void	render_walls(t_struct **s, int x, int texture, t_ray *ray)
 	y = wall.top_pix;
 	while (y < wall.wbottompx)
 	{
-		// wall.dif = y - wall.top_pix + abs(top_tmp);
-		// color = get_color(s, texture, wall.w_stripeheight, wall.dif);
-		my_mlx_pixel_put(&(*s)->img, x, y, 0xff0000);
+		wall.dif = y - wall.top_pix + abs(top_tmp);
+		color = get_color(s, texture, wall.w_stripeheight, wall.dif);
+		my_mlx_pixel_put(&(*s)->img, x, y, color);
 		if (y > (*s)->win_higth)
 			break ;
 		y++;
 	}
 	draw_floor(s, y, x);
-	// printf("------------------ > wall.wbottompx : %d\n", wall.wbottompx);
-	// printf("------------------ > wallPR : %f\n", wall.distanceproj);
-	// printf("------------------ > coorect : %f\n", wall.correct_dis);
 }

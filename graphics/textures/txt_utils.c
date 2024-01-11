@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 07:27:07 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 12:45:15 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:54:57 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	get_path_pos(t_var *v, int i, int j)
 {
-	int found;
+	int	found;
 
 	found = 0;
-	while(i < v->i)
+	while (i < v->i)
 	{
 		j = 0;
 		while (v->new_map[i] && v->new_map[i][j])
@@ -25,12 +25,12 @@ void	get_path_pos(t_var *v, int i, int j)
 			if (v->new_map[i][j] == '/')
 			{
 				found = 1;
-				break;
+				break ;
 			}
 			j++;
 		}
 		if (found == 1)
-			break;
+			break ;
 		i++;
 	}
 	j++;

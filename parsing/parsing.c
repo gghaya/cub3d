@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:28:47 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 23:40:06 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:29:52 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@ void	parsing(t_var *v, t_paths **path)
 {
 	t_rgb	rgb;
 
-	(*path)->n = 0;
-	(*path)->s = 0;
-	(*path)->e = 0;
-	(*path)->w = 0;
 	v->rgb = &rgb;
 	v->new_map = fill_empty(v->new_map, v);
 	check_id(v, path);
-	check_valid_chars(v->new_map, v, path);
+	check_valid_chars(v->new_map, v);
 	parse_path(v->new_map, v);
 	get_player_pos(v);
 }
@@ -50,7 +46,7 @@ int	count_directions(char **map, t_var *v)
 	return (0);
 }
 
-void	check_valid_chars(char **m, t_var *v, t_paths **path)
+void	check_valid_chars(char **m, t_var *v)
 {
 	v->i = 0;
 	v->j = 0;
@@ -69,14 +65,6 @@ void	check_valid_chars(char **m, t_var *v, t_paths **path)
 				&& m[v->i][v->j] != 'E'
 				&& m[v->i][v->j] != 'W' && m[v->i][v->j] != ' ')
 				ft_puterror("Error: Invalid map\n", 2);
-			if (m[v->i][v->j] == 'N')
-				(*path)->n = 1;
-			else if (m[v->i][v->j] == 'E')
-				(*path)->e = 1;
-			else if(m[v->i][v->j] == 'S')
-				(*path)->s = 1;
-			else
-				(*path)->w = 1;
 			v->j++;
 		}
 		v->found = 1;

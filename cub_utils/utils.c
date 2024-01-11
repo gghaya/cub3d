@@ -6,11 +6,20 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:32:40 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 17:53:12 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:52:30 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	skip_space(t_var *v)
+{
+	while (v->new_map[v->x][v->skip] && v->new_map[v->x][v->skip] == ' ')
+		v->skip++;
+	v->save = v->skip;
+	while (v->new_map[v->x][v->skip] && v->new_map[v->x][v->skip] != ' ')
+		v->skip++;
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {

@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:23:48 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 15:27:36 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:05:30 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,16 @@ void 	ft_direction(t_struct **s)
 {
 	if ((*s)->x > 0 && (*s)->x < (*s)->map_rows && (*s)->y > 0 && (*s)->y < (*s)->map_cols)
 	{
-		if ((*s)->map[(*s)->x][(*s)->y] == 'E')
+		if ((*s)->map[(*s)->y][(*s)->x] == 'E')
 			(*s)->rot_angle = M_PI;
-		else if ((*s)->map[(*s)->x][(*s)->y] == 'N')
+		else if ((*s)->map[(*s)->x][(*s)->x] == 'N')
 			(*s)->rot_angle = M_PI_2;
-		else if((*s)->map[(*s)->x][(*s)->y] == 'W')
+		else if((*s)->map[(*s)->x][(*s)->x] == 'W')
 			(*s)->rot_angle = 0;
-		else if((*s)->map[(*s)->x][(*s)->y] == 'S')
+		else if((*s)->map[(*s)->x][(*s)->x] == 'S')
 			(*s)->rot_angle = M_PI * 3 / 2;
-		
 	}
 }
-
 
 void norm(t_struct **s)
 {

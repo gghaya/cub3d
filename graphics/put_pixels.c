@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:23:48 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/11 10:05:30 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:48:11 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void init_player(t_struct **s)
 		}	
 		i++;
 	}
-	(*s)->player_x = (*s)->x * (*s)->tail_size;
-	(*s)->player_y = (*s)->y * (*s)->tail_size;
+	(*s)->player_x = ((*s)->x * (*s)->tail_size) + (*s)->tail_size / 2; // modified to center the player pos
+	(*s)->player_y = ((*s)->y * (*s)->tail_size) + (*s)->tail_size / 2; // modified to center the player pos
 	(*s)->real_y = (*s)->y * (*s)->tail_size;
 	(*s)->real_x = (*s)->x * (*s)->tail_size;
 	(*s)->turn_dirct =0;

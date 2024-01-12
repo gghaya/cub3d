@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:41:45 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 15:28:59 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:17:09 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	draw_floor(t_struct **s, int y, int x)
 
 void	rendr_util(t_struct **s, t_walls *wall, t_ray *ray)
 {
-	if (ray->distance == 0)
-		ray->distance = 1.0;
 	wall->correct_dis = ray->distance * cos (ray->ray_angle - (*s)->rot_angle);
 	wall->distanceproj = ((*s)->win_width / 2) / tan((*s)->fov_angle / 2);
 	wall->pwheight = ((*s)->tail_size / wall->correct_dis) * wall->distanceproj;

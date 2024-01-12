@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:27:36 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 11:47:33 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:24:04 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,10 @@ int	get_biggest_line(char **str)
 
 void	get_map_len(t_var *v, char *str)
 {
+	v->map_len = 0;
+	v->big_line = 0;
+	v->i = 0;
+	v->j = 0;
 	v->fd1 = open(str, O_RDWR);
 	v->s = get_next_line(v->fd1);
 	while (v->s != NULL)

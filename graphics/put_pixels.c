@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:23:48 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/11 10:48:11 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:32:21 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void 	ft_direction(t_struct **s)
 	{
 		if ((*s)->map[(*s)->y][(*s)->x] == 'E')
 			(*s)->rot_angle = M_PI;
-		else if ((*s)->map[(*s)->x][(*s)->x] == 'N')
+		else if ((*s)->map[(*s)->y][(*s)->x] == 'N')
 			(*s)->rot_angle = M_PI_2;
-		else if((*s)->map[(*s)->x][(*s)->x] == 'W')
+		else if((*s)->map[(*s)->y][(*s)->x] == 'W')
 			(*s)->rot_angle = 0;
-		else if((*s)->map[(*s)->x][(*s)->x] == 'S')
+		else if((*s)->map[(*s)->y][(*s)->x] == 'S')
 			(*s)->rot_angle = M_PI * 3 / 2;
 	}
 }
@@ -68,7 +68,7 @@ void init_player(t_struct **s)
 	(*s)->turn_dirct =0;
 	(*s)->walk_dirct=0;
 	(*s)->move_speed = 15.0;
-	(*s)->rot_speed= 3*(M_PI/180);
+	(*s)->rot_speed= 2.5*(M_PI/180);
 }
 int key_pressed(int key_code, t_struct **s)
 {
@@ -531,7 +531,7 @@ void draw_disk(t_struct	**s)
 	// 	j = 0;
 	// 	while (j < 20)
 	// 	{
-			my_mlx_pixel_put(&(*s)->img, ((*s)->player_x + 32) * MINI, ((*s)->player_y +32) * MINI, 0x000000); // Dessine un pixel blanc à l'intérieur du disque
+			my_mlx_pixel_put(&(*s)->img, ((*s)->player_x + 64) * MINI, ((*s)->player_y +64) * MINI, 0xB80000); // Dessine un pixel blanc à l'intérieur du disque
 			// j++;
 	// 	}
 	// 	i++;
@@ -552,15 +552,15 @@ void    put_(t_struct **s)
 	// 	while ((*s)->map[k][l])
 	// 	{
 	// 		i = 0;
-	// 		while (i < 63)
+	// 		while (i < 64)
 	// 		{
 	// 			j = 0;
-	// 			while (j < 63)
+	// 			while (j < 64)
 	// 			{
-	// 				if ((*s)->map[k][l] == '1')
-	// 					my_mlx_pixel_put(&((*s)->img), ((l*(*s)->tail_size)+j) * MINI, ((k*(*s)->tail_size)+i )* MINI, 0x2c446d);
-	// 				else if ((*s)->map[k][l] == '0' || ft_strchrr("NSWE", (*s)->map[k][l]) == 1)
-	// 						my_mlx_pixel_put(&((*s)->img), ((l*(*s)->tail_size)+j) * MINI, ((k*(*s)->tail_size)+i) * MINI, 0xece7dd);
+	// 				// if ((*s)->map[k][l] == '1')
+	// 				// 	my_mlx_pixel_put(&((*s)->img), ((l*64)+j) * MINI, ((k*64)+i )* MINI, 0x2c446d);
+	// 				if ((*s)->map[k][l] == '0' || ft_strchrr("NSWE", (*s)->map[k][l]) == 1)
+	// 						my_mlx_pixel_put(&((*s)->img), ((l*64)+j) * MINI, ((k*64)+i) * MINI, 0xece7dd);
 	// 				j++;
 	// 			}
 	// 			i++;
@@ -569,7 +569,7 @@ void    put_(t_struct **s)
 	// 	}
 	// 	k++;
 	// }
-	// push_rays(s);
+	// // push_rays(s);
 	// draw_disk(s);
 	// draw_rays(s);
 	// for (int i = 0; i < (*s)->num_rays; i++)
@@ -583,7 +583,7 @@ int key_exit(int key_code, t_info *info)
 	(void)info;
 	if (key_code == 17)
 		exit(0);
-	return(0);
+	return (0);
 }
 
 void manage_events(t_struct **s)

@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:28:55 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 00:30:44 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:31:37 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,16 @@ void f(){
 
 int	main(int ac, char **av)
 {
-	t_var	v;
-	t_info	info;
-	t_paths	*paths;
-	t_struct *s;
-	
+	t_var		v;
+	t_info		info;
+	t_paths		*paths;
+	t_struct	*s;
 	// atexit(f);
 	if (ac != 2)
 		ft_puterror("Error in arguments!\n", 2);
-	v.map_len = 0;
-	v.big_line = 0;
-	v.i = 0;
-	v.j = 0;
 	s = malloc(sizeof(t_struct));
 	paths = my_malloc(sizeof(t_paths), &s);
-	if(!paths || !s)
+	if (!paths || !s)
 		ft_puterror("Error : Failed to allocate structs", 2);
 	check_ex(av[1]);
 	v.fd = open(av[1], O_RDWR);
@@ -72,7 +67,6 @@ int	main(int ac, char **av)
 		return (1);
 	v.i = 0;
 	parsing(&v, &paths);
-	v.i = 0;
 	real_map(&v, &s); // *************************** leaks here;
 	info_init(&s);
 	init_player(&s);

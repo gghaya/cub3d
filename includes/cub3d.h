@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:53:05 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 16:52:38 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/11 21:54:17 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 # include <fcntl.h>
 # include "../get_next_line/get_next_line.h"
 # include "../Libft/libft.h"
-#include<mlx.h>
-#include<math.h>
-#include <limits.h>
+# include <mlx.h>
+# include <math.h>
+# include <limits.h>
 # include <stdbool.h>
 
 # define HEIGHT 1000
 # define WIDTH 1500
 # define SIZE 128
-# define MINI 0.1
+# define MINI 0.05
 # define MAX_ALLOC 184467440737
 
 extern int W;

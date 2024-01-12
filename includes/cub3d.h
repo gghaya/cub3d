@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:53:05 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 16:52:38 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:09:22 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@
 # include <fcntl.h>
 # include "../get_next_line/get_next_line.h"
 # include "../Libft/libft.h"
-#include<mlx.h>
-#include<math.h>
-#include <limits.h>
+# include <mlx.h>
+# include <math.h>
+# include <limits.h>
 # include <stdbool.h>
+# include <stdlib.h>
 
 # define HEIGHT 1000
 # define WIDTH 1500
 # define SIZE 128
 # define MINI 0.1
 # define MAX_ALLOC 184467440737
-
-extern int W;
-extern int S;
-extern int A;
-extern int D;
+# define W  13
+# define S  1
+# define A  0
+# define D  2
 // extern int NUM;
 
 //******* TEXTURES STRUCT ********
@@ -254,6 +254,34 @@ typedef struct s_struct
 
 }	t_struct;
 
+//******** REAL STRUCT ********
+typedef struct s_real
+{
+	char	*line;
+	int		i;
+	int		begin;
+	size_t	j;
+	char	*set;
+	size_t	len;
+	char	*tmp;
+	int		k;
+}	t_real;
+
+typedef struct s_point
+{
+	double	dist;
+	double	x;
+	double	y;
+	double	x_intercept;
+	double	y_intercept;
+	double	y_step;
+	double	x_step;
+	double	next_x;
+	double	next_y;
+	double	x_check;
+	double	y_check;
+}	t_point;
+
 //*********** PARSING *************
 void	parsing(t_var *v, t_paths **path);
 void	ft_puterror(char *s, int fd);
@@ -311,9 +339,36 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	read_textures(t_struct **s, t_paths **path);
 int		check_wall_hit(t_struct **s, int texture, t_ray *ray);
 int		get_color(t_struct **s, int texture, int wheight, int wall_dif);
-void	scale_img(t_img *img, int x , int y, t_struct **s);
+void	scale_img(t_img *img, int x, int y, t_struct **s);
 int		get_vertical_texture(t_struct **s, t_ray *ray);
 int		get_horizontal_texture(t_struct **s, t_ray *ray);
 int		search_pixel(t_img *img, int wheight, int wall_dif);
 
+//******** Ray Casting ***********
+void	real_map(t_var *var, t_struct **s);
+t_real	free_real(t_struct **s, t_real r);
+t_real	help2_real(t_var *var, t_struct **s, t_real r);
+t_real	help_real(t_var *var, t_real r);
+char	*pure_strtrim(char const *s1, char const *set);
+char	*ft_strtrim(char const *s1, char const *set);
+int		ft_strchrr(const char *string, int searchedChar);
+void	main2(	t_paths	*paths, t_struct *s, t_var v);
+double	distance(double xb, double yb, double xe, double ye);
+int		wall_collision(double x, double y, t_struct **s);
+int		wall_check(double x, double y, t_struct **s);
+t_inter	h_intersect(t_ray ray, t_struct **s);
+t_inter	v_intersect(t_ray ray, t_struct **s);
+int		key_pressed(int key_code, t_struct **s);
+int		key_released(int key_code, t_struct **s);
+int		key_exit(int key_code, t_info *info);
+t_ray	is_facing(t_ray ray);
+void	cast_rays(t_struct **s);
+int		in_map(t_point p, t_struct **s);
+t_inter	fill_vert(t_inter	interv, t_point p, t_struct **s);
+t_inter	fill_horis(t_inter	interv, t_point p, t_struct **s);
+int		update_info( t_struct **s);
+void	norm(t_struct **s);
+double	normalize(double angle);
+t_ray	fill_info(t_inter r1, t_ray ray, int vert);
+void	ft_direction(t_struct **s, int j, int i);
 #endif

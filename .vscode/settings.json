@@ -4,7 +4,15 @@
         "__string": "c",
         "string": "c",
         "string_view": "c",
-        "complex": "c"
+        "complex": "c",
+        "cub3d.h": "c",
+        "__split_buffer": "c",
+        "algorithm": "c",
+        "functional": "c",
+        "iterator": "c",
+        "locale": "c",
+        "unordered_map": "c",
+        "vector": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

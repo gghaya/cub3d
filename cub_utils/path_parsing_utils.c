@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:37:29 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 18:58:07 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:00:50 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ void	check_id_help(t_var *v, int i, int n)
 void	is_opened(char *s[])
 {
 	t_fds	fds;
+	int		i;
 
+	if(i > 4)
+		ft_puterror("Error: in path\n", 2);
 	fds.fd0 = open(s[0], O_RDONLY);
 	fds.fd00 = open(s[0], O_DIRECTORY);
 	if (fds.fd0 == -1 || fds.fd00 != -1)

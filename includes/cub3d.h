@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:53:05 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/11 21:54:17 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:12:38 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define WIDTH 1500
 # define SIZE 128
 # define MINI 0.05
-# define MAX_ALLOC 184467440737
+# define MAX_ALLOC 18446
 
 extern int W;
 extern int S;
@@ -299,6 +299,7 @@ void	p_validation_help(t_var *v, int i);
 void	fill_path(char *s[], t_paths **paths, int index, int i);
 void	helper(t_var *v);
 void	skip_space(t_var *v);
+void	check_dup(char **map, t_var *v);
 
 //******** GRAPHICS ***********
 void	real_map(t_var *var, t_struct **s);

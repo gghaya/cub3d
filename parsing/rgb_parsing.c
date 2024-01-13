@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:41:31 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/08 22:45:58 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:54:03 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	count_id(t_var *v, int i, int j)
 		if (v->new_map[i][j] == 'F')
 			v->flag_f++;
 	}
+	if (v->flag_c > 1 || v->flag_f > 1)
+		ft_puterror("Error: in rgb identifiers\n", 2);
 }
 
 void	is_rgb_valid(t_var *v)

@@ -6,7 +6,7 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:28:47 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 15:29:52 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:12:50 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	parsing(t_var *v, t_paths **path)
 	check_valid_chars(v->new_map, v);
 	parse_path(v->new_map, v);
 	get_player_pos(v);
+	check_dup(v->new_map, v);
 }
 
 int	count_directions(char **map, t_var *v)

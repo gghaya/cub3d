@@ -6,11 +6,33 @@
 /*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:32:40 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 16:52:30 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:13:51 by abazerou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	check_dup(char **map, t_var *v)
+{
+	int	i;
+	int	j;
+	int	flag;
+
+	flag = 0;
+	while (i < v->map_pos)
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] && map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
+				flag++;
+			j++;
+		}
+		i++;
+	}
+	if (flag != 4)
+		ft_puterror("Error: duplicated path\n", 2);
+}
 
 void	skip_space(t_var *v)
 {

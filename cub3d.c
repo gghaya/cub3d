@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:28:55 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/12 17:02:25 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/13 23:33:54 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	read_map(t_var *v)
 }
 
 // void f(){
-//     system("leaks cub3D");
+//     system("leaks CUB3D");
 // }
 
 void	main2(	t_paths	*paths, t_struct *s, t_var v)
@@ -51,12 +51,14 @@ void	main2(	t_paths	*paths, t_struct *s, t_var v)
 	init_player(&s);
 	put_pixels(&s, &paths);
 	mlx_loop(s->mlx);
+	freemap(&s);
 	free_all(s, &v);
 	free(s);
 }
 
 int	main(int ac, char **av)
 {
+	// atexit(f);
 	t_var		v;
 	t_info		info;
 	t_paths		*paths;

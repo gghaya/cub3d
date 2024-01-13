@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:53:05 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/12 19:09:22 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/13 18:39:31 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define WIDTH 1500
 # define SIZE 128
 # define MINI 0.1
-# define MAX_ALLOC 184467440737
+# define MAX_ALLOC 7440737
 # define W  13
 # define S  1
 # define A  0
@@ -227,6 +227,7 @@ typedef struct s_struct
 	int				wall_width ;
 	int				num_rays;
 	char			**map;
+	char			**vmap;
 	void			*mlx;
 	void			*win;
 	int				x;
@@ -329,7 +330,6 @@ void	helper(t_var *v);
 void	skip_space(t_var *v);
 
 //******** GRAPHICS ***********
-void	real_map(t_var *var, t_struct **s);
 void	info_init(t_struct **s);
 void	put_pixels(t_struct **s, t_paths **path);
 void	put_(t_struct **s);
@@ -371,4 +371,5 @@ void	norm(t_struct **s);
 double	normalize(double angle);
 t_ray	fill_info(t_inter r1, t_ray ray, int vert);
 void	ft_direction(t_struct **s, int j, int i);
+void	freemap(t_struct **s);
 #endif

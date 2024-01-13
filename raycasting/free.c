@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 12:07:43 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/12 20:09:42 by gghaya           ###   ########.fr       */
+/*   Created: 2024/01/13 23:32:29 by gghaya            #+#    #+#             */
+/*   Updated: 2024/01/13 23:33:32 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "../includes/cub3d.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	freemap(t_struct **s)
 {
-	unsigned char	*cs;
-	size_t			i;
+	int	i;
 
-	cs = (unsigned char *) s;
 	i = 0;
-	while (i < n)
+	if ((*s)->map)
 	{
-		if (cs[i] == (unsigned char)c)
+		while ((*s)->map[i])
 		{
-			return (cs + i);
+			free((*s)->map[i++]);
 		}
-		i++;
+		free((*s)->map);
 	}
-	return (NULL);
 }

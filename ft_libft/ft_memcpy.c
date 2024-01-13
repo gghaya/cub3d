@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gghaya <gghaya@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:36:24 by gghaya            #+#    #+#             */
-/*   Updated: 2022/11/09 21:31:58 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/12 20:17:37 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	{
 		while (i < n)
 		{
-		dstt[i] = srcc[i];
-		i++;
+			dstt[i] = srcc[i];
+			i++;
 		}
 		return (dstt);
 	}

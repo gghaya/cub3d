@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:10:46 by gghaya            #+#    #+#             */
-/*   Updated: 2024/01/12 17:21:21 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/13 23:24:29 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	key_released(int key_code, t_struct **s)
 int	key_exit(int key_code, t_info *info)
 {
 	(void)info;
-	if (key_code == 17)
-		exit(0);
+	(void)key_code;
+	exit(0);
 	return (0);
 }
 

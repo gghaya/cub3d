@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:27:36 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 11:47:33 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/12 20:15:58 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,13 @@ void	get_player_pos(t_var *v)
 	i = 0;
 	j = 0;
 	flag = 0;
-	v->player_pos = 0;
 	i = v->map_pos;
 	while (v->new_map[i])
 	{
 		j = 0;
 		while (v->new_map[i][j])
 		{
-			if (v->new_map[i][j] == 'N' || v->new_map[i][j] == 'E'
-				|| v->new_map[i][j] == 'S' || v->new_map[i][j] == 'W')
+			if (ft_strchrr("10NEWS", v->new_map[i][j]) == 1)
 			{
 				v->player_pos = j;
 				flag = 1;

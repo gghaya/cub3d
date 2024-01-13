@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:08:04 by gghaya            #+#    #+#             */
-/*   Updated: 2024/01/12 16:56:24 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/13 18:58:17 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*pure_strtrim(char const *s1, char const *set)
 
 t_real	help_real(t_var *var, t_real r)
 {
-	r.line = malloc(sizeof(char) * 10);
+	r.line = NULL;
 	r.i = 0;
 	r.begin = 0;
 	r.set = " ";

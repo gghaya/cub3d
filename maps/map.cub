@@ -4,8 +4,8 @@ WE    ./graphics/pictures/we.xpm
 EA    ./graphics/pictures/ea.xpm
 
 
-F 8,255,255
-C 4,26,30
+F 8,255,222
+C 4,0,30
 
 
 
@@ -88,4 +88,6 @@ C 4,26,30
             10001      11111
              10001
               10001
+              11111
+               11111
                11111

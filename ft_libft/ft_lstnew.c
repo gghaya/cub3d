@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gghaya <gghaya@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 23:07:09 by gghaya            #+#    #+#             */
-/*   Updated: 2022/11/09 21:18:18 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/12 20:09:12 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-#include<stdio.h>
+#include "libft.h"
+#include <stdio.h>
 
 t_list	*ft_lstnew(void *content)
 {

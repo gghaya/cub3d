@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:50:23 by gghaya            #+#    #+#             */
-/*   Updated: 2024/01/12 19:01:22 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/13 23:30:25 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_real	help2_real(t_var *var, t_struct **s, t_real r)
 		free(r.tmp);
 		r.i++;
 	}
+	(*s)->map = NULL;
 	(*s)->map = malloc(sizeof(char *) * ((r.i - r.begin) + 2));
 	if (!(*s)->map)
 		exit(0);
@@ -118,4 +119,5 @@ void	cast_rays(t_struct **s)
 		i++;
 		ray_ang += ((*s)->fov_angle / (double)(*s)->num_rays);
 	}
+	free((*s)->rays);
 }

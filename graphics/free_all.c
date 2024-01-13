@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 17:46:27 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/09 12:56:14 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/13 23:28:53 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*my_malloc(size_t size, t_struct **s)
 	return (ptr);
 }
 
-void	scale_img(t_img *img, int x , int y, t_struct **s)
+void	scale_img(t_img *img, int x, int y, t_struct **s)
 {
 	int	rowy;
 	int	colx;

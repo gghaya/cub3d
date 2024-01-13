@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:05:01 by gghaya            #+#    #+#             */
-/*   Updated: 2024/01/12 18:50:25 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/13 23:29:39 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,13 @@ int	update_info( t_struct **s)
 	mlx_clear_window((*s)->mlx, (*s)->win);
 	put_(s);
 	return (0);
+}
+
+t_ray	fill_info(t_inter r1, t_ray ray, int vert)
+{
+	ray.distance = r1.dist;
+	ray.hit_x = r1.x;
+	ray.hit_y = r1.y;
+	ray.hit_vertical = vert;
+	return (ray);
 }

@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:53:05 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/13 18:39:31 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/14 19:02:11 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,9 @@ typedef struct s_var
 	int		start_j;
 	int		save;
 	int		is_floor;
+	char	*s_trim;
+	int		b;
+	int		z;
 	size_t	big_line;
 	size_t	len_s;
 	t_paths	*paths;
@@ -328,6 +331,9 @@ void	p_validation_help(t_var *v, int i);
 void	fill_path(char *s[], t_paths **paths, int index, int i);
 void	helper(t_var *v);
 void	skip_space(t_var *v);
+void	check_dup(char **map, t_var *v);
+void	check_last_line(char **map, t_var *v);
+void	help_line(t_var *v, char **map);
 
 //******** GRAPHICS ***********
 void	info_init(t_struct **s);

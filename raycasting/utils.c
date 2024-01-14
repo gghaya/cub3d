@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:00:03 by gghaya            #+#    #+#             */
-/*   Updated: 2024/01/13 23:31:12 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/14 18:08:04 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ void	ft_direction(t_struct **s, int j, int i)
 	{
 		if ((*s)->map[(*s)->y][(*s)->x] == 'E')
 			(*s)->rot_angle = M_PI;
-		else if ((*s)->map[(*s)->x][(*s)->x] == 'N')
+		else if ((*s)->map[(*s)->y][(*s)->x] == 'N')
 			(*s)->rot_angle = M_PI_2;
-		else if ((*s)->map[(*s)->x][(*s)->x] == 'W')
+		else if ((*s)->map[(*s)->y][(*s)->x] == 'W')
 			(*s)->rot_angle = 0;
-		else if ((*s)->map[(*s)->x][(*s)->x] == 'S')
+		else if ((*s)->map[(*s)->y][(*s)->x] == 'S')
 			(*s)->rot_angle = M_PI * 3 / 2;
 	}
 }

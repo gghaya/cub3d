@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:32:40 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 16:52:30 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/14 19:01:57 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	help_line(t_var *v, char **map)
+{
+	while (v->s_trim && v->s_trim[0] == '\n')
+	{
+		v->b++;
+		if (!v->s_trim)
+			ft_puterror("Error: null\n", 2);
+		if (v->s_trim != NULL)
+			free(v->s_trim);
+		v->s_trim = pure_strtrim(map[v->b], " ");
+	}
+}
 
 void	skip_space(t_var *v)
 {

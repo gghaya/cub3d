@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:28:55 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/14 19:03:17 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/14 19:37:28 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ void	check_dup(char **map, t_var *v)
 		free(s);
 		i++;
 	}
-	if (flag > 4 || f > 2)
-		ft_puterror("Error: duplicated path\n", 2);
+	if (flag > 4)
+		ft_puterror("Error: Duplicated path!\n", 2);
+	if (f > 2)
+		ft_puterror("Error: Duplicated Identifiers!\n", 2);
 }
 
 void	check_last_line(char **map, t_var *v)

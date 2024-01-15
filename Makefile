@@ -8,7 +8,7 @@ SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parsing
        graphics/textures/textures.c graphics/textures/txt_utils.c graphics/free_all.c raycasting/utils.c\
 
 OBJS = $(patsubst %.c,build/%.o,$(SRCS))
-NAME = CUB3D
+NAME = cub3D
 HEADERS = includes/cub3d.h get_next_line/get_next_line.h Libft/libft.h
 LIBFTDIR = ft_libft
 LIBFT = ${LIBFTDIR}/libft.a

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abazerou <abazerou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:41:45 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/10 15:28:59 by abazerou         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:33:17 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_sky(t_struct **s, int x, int top_pixel)
 	y = 0;
 	while (y < top_pixel)
 	{
-		my_mlx_pixel_put(&(*s)->img, x, y, 0x181818);
+		my_mlx_pixel_put(&(*s)->img, x, y, (*s)->ceiling);
 		y++;
 	}
 }
@@ -28,7 +28,7 @@ void	draw_floor(t_struct **s, int y, int x)
 {
 	while (y < ((*s)->win_higth))
 	{
-		my_mlx_pixel_put(&(*s)->img, x, y, 0xBFBFBF);
+		my_mlx_pixel_put(&(*s)->img, x, y, (*s)->floor);
 		y++;
 	}
 }

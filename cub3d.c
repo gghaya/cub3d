@@ -6,7 +6,7 @@
 /*   By: gghaya <gghaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:28:55 by abazerou          #+#    #+#             */
-/*   Updated: 2024/01/14 19:37:28 by gghaya           ###   ########.fr       */
+/*   Updated: 2024/01/15 12:36:40 by gghaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	main2(	t_paths	*paths, t_struct *s, t_var v)
 	v.i = 0;
 	parsing(&v, &paths);
 	v.i = 0;
+	s->ceiling = v.rgb->ceiling;
+	s->floor = v.rgb->floor;
 	real_map(&v, &s);
 	info_init(&s);
 	init_player(&s);
@@ -124,7 +126,8 @@ int	main(int ac, char **av)
 	v.j = 0;
 	s = malloc(sizeof(t_struct));
 	paths = my_malloc(sizeof(t_paths), &s);
-	if (!paths || !s)
+	v.rgb = my_malloc(sizeof(t_rgb), &s);
+	if (!paths || !s || !v.rgb)
 		ft_puterror("Error : Failed to allocate structs", 2);
 	check_ex(av[1]);
 	v.fd = open(av[1], O_RDWR);
